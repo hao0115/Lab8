@@ -1,0 +1,68 @@
+---
+title: "lab8"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 2.Complete Problem 1 and Problem 2 from Activity 8 and submit your code to a GitHub repository.
+
+## problem 1- activity 8
+```{r}
+## code after re-formatting
+prime = function(n){
+  if(n %% 1!= 0 | n<0){
+    return (FALSE)
+  }else if(n == 1){
+    return (FALSE)
+  }else if(n == 2){
+    return (TRUE)
+  }else {
+    for(i in 2:(sqrt(n))){
+      if(n %% i == 0){
+        return (FALSE)
+      }}
+    return (TRUE)
+  }}
+
+prime(2)
+prime(3)
+prime(99)
+```
+
+## problem 2- activity 8
+```{r}
+## code after re-formatting and debugging
+find_runs = function(x,k) {
+  n = length(x)
+  runs = NULL
+  for(i in 1:(n-k+1)) {
+    if(all(x[i:(i+k-1)] == 1)) runs = c(runs,i)
+  }
+  return(runs)
+}
+find_runs(c(1,0,0,1,1,0,1,1,1),2)
+```
+
+# 3.Please debug the following function that should return a sorted vector in ascending order. For example, if the input for your function is the vector (3, 1, 2), then your function should return the vector (1, 2, 3). Please submit your code to the GitHub repository.
+
+```{r}
+sort_vec = function(x) {
+  if (length(x) < 2) return (x)
+  for(last in 1:(length(x)-1)) {
+    for(first in 1:(length(x)-last)) {
+      if(x[first] > x[first + 1]) {
+        temp = x[first]
+        x[first] = x[first + 1]
+        x[first + 1] = temp
+      }
+    }
+  }
+  return(x)
+}
+sort_vec(c(3,1,2))
+sort_vec(c(5,4,3,2,1))
+```
+
